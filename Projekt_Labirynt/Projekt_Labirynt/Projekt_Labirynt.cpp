@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <random>
+#include <string>
+#include <fstream>
 #include <cstdlib>  //do kasowania konsoli
 #include <conio.h> //do natychmiastowego cin
 
@@ -63,6 +65,9 @@ public:
         cout << "Lokalizac = " << LG_Y << endl;
 
         char odpowiedź = _getch();
+        ifstream plik("grafiki.txt");
+        string linia;
+        int nr_linii = 0;
 
         system("cls");
 
@@ -72,18 +77,17 @@ public:
             }
         }
         else if (odpowiedź == 'w') {
-            if ((LG_X != 1) && (tablica[LG_X - 1][LG_Y] != "#")) { // <- poprawione
+            if ((LG_X != 1) && (tablica[LG_X - 1][LG_Y] != "#")) { 
                 LG_X--;
             }
         }
         else if (odpowiedź == 'd') {
-            tablica[LG_X][LG_Y - 1] = "_";
-            if ((LG_Y != 19) && (tablica[LG_X][LG_Y + 1] != "#")) { // <- poprawione
+            if ((LG_Y != 19) && (tablica[LG_X][LG_Y + 1] != "#")) { 
                 LG_Y++;
             }
         }
         else if (odpowiedź == 'a') {
-            if ((LG_Y != 1) && (tablica[LG_X][LG_Y - 1] != "#")) { // <- poprawione
+            if ((LG_Y != 1) && (tablica[LG_X][LG_Y - 1] != "#")) { 
                 LG_Y--;
             }
         }
@@ -125,6 +129,23 @@ public:
         for (int i = 0; i < 25; i++) {
             for (int j = 0; j < 21; j++) {
                 cout << tablica[i][j] << " ";
+
+                if (j == 20) {
+                    nr_linii = 0;
+                    while (getline(plik, linia)) {
+                        nr_linii++;
+                        if (nr_linii == 1) {
+                            cout << "Linia 15: " << linia;
+                            break;
+                        }
+                    }
+                }
+
+                /*
+                if (j == 20) {
+                    cout << "KKK";
+                }
+                */
             }
             cout << endl;
         }
@@ -138,6 +159,7 @@ public:
 
 int main()
 {
+
     // wartości
     string tablica[25][21];
     int lokalizacja_gracza_X = 23;
