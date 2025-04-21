@@ -127,62 +127,79 @@ public:
 
         }
         // system oceniania lokacji
-        /*
-        if (odpowiedź == 'w') {
-            if ((tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X - 1][LG_Y] != "#")  && (tablica[LG_X + 1][LG_Y] != "#")) {
+        
+        if (odpowiedź == 'w') { 
+            cout << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << (tablica[LG_X - 1][LG_Y + 1]) << "\n" << (tablica[LG_X][LG_Y - 1]) << "A" << (tablica[LG_X][LG_Y + 1]);
+
+            cout << "\n \n \n";
+            if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 1;
             }
-            else if ((tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "#") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X + 1][LG_Y] != "#")) {
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 2;
             }
-            else if ((tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "#") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X + 1][LG_Y] != "_")) {
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "_")) {
                 lokalizacja_dla_widoku = 3;
             }
-            else if ((tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X + 1][LG_Y] != "#")) {
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 4;
             }
-            else if ((tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X + 1][LG_Y] != "_")) {
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "_")) {
                 lokalizacja_dla_widoku = 5;
             }
-            else if ((tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X + 1][LG_Y] != "_")) {
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X][LG_Y + 1] == "_")) {
                 lokalizacja_dla_widoku = 6;
             }
-            else if ((tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "#") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X + 1][LG_Y] != "#")) {
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 7;
             }
-                        else if ((tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "#") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X + 1][LG_Y] != "_")) {
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X][LG_Y + 1] == "")) {
                 lokalizacja_dla_widoku = 8;
             }
-       
-       
+            else {
+                cout << "COS NOWEGO - W";
+            }
+        }
                 else if (odpowiedź == 's') {
-            if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y - 1] != "#")) {
+                cout  << (tablica[LG_X][LG_Y - 1]) << "V" << (tablica[LG_X][LG_Y + 1]) << "\n" << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << (tablica[LG_X - 1][LG_Y + 1]) << "\n";
+
+            if ((tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 1;
             }
-                else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y - 1] != "#")) {
+                else if ((tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 2;
             }
-                    else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y - 1] != "#")) {
+                    else if ((tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 3;
             }
-                    else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y - 1] != "#")) {
+                    else if ((tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 4;
             }
-                    else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y - 1] != "#")) {
+                    else if ((tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 5;
             }
-                    else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y - 1] != "#")) {
+                    else if ((tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 6;
             }
-                    else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y - 1] != "#")) {
+                    else if ((tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 7;
             }
-                    else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y - 1] != "#")) {
+                    else if ((tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#")) {
                 lokalizacja_dla_widoku = 8;
+            }
+                    else {
+                cout << "COS NOWEGO - S";
             }
         }
 
-        else if (odpowiedź == 'd') {
+
+
+        
+                else if (odpowiedź == 'd') {
+                cout << (tablica[LG_X - 1][LG_Y]) <<  (tablica[LG_X - 1][LG_Y + 1]) << "\n" <<  ">" << (tablica[LG_X][LG_Y + 1]) << "\n" << (tablica[LG_X + 1][LG_Y]) << (tablica[LG_X + 1][LG_Y + 1]) << "\n";
+
+        }
+            /*
             if ((tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X + 1][LG_Y] != "_") && (tablica[LG_X + 1][LG_Y - 1] != "#") && (tablica[LG_X][LG_Y + 1] != "#")  && (tablica[LG_X][LG_Y - 1] != "#")) {
                 lokalizacja_dla_widoku = 1;
             }
@@ -208,8 +225,12 @@ public:
                 lokalizacja_dla_widoku = 8;
             }
         }
+        */
+                else if (odpowiedź == 'a') {
+                cout << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << "\n" << (tablica[LG_X - 1][LG_Y - 1]) << "<" << "\n" << (tablica[LG_X + 1][LG_Y - 1]) << (tablica[LG_X + 1][LG_Y]) << "\n";
 
-        else if (odpowiedź == 'a') {
+        }
+        /*
             if ((tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X1][LG_Y + 1] != "#")  && (tablica[LG_X][LG_Y - 1] != "#")) {
                 lokalizacja_dla_widoku = 1;
             }
@@ -280,7 +301,6 @@ public:
             }
             cout << endl;
         }
-
 
         Ruch(tablica, LG_X, LG_Y);
 
