@@ -62,7 +62,7 @@ public:
         // PAMIĘTAJ DZBANIE ŻE JEST TO DO GÓRY NOGAMI !!!
 
         cout << "Lokalizacja X = " << LG_X << endl;
-        cout << "Lokalizac = " << LG_Y << endl;
+        cout << "Lokalizacja Y =" << LG_Y << endl;
 
         char odpowiedź = _getch();
         ifstream plik("grafiki.txt");
@@ -128,7 +128,7 @@ public:
         // system oceniania lokacji
         
         if (odpowiedź == 'w') { 
-            cout << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << (tablica[LG_X - 1][LG_Y + 1]) << "\n" << (tablica[LG_X][LG_Y - 1]) << "A" << (tablica[LG_X][LG_Y + 1]);
+            //cout << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << (tablica[LG_X - 1][LG_Y + 1]) << "\n" << (tablica[LG_X][LG_Y - 1]) << "A" << (tablica[LG_X][LG_Y + 1]);
 
             cout << "\n \n \n";
             if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#")) {
@@ -160,7 +160,7 @@ public:
             }
         }
                 else if (odpowiedź == 's') {
-                cout  << (tablica[LG_X][LG_Y - 1]) << "V" << (tablica[LG_X][LG_Y + 1]) << "\n" << (tablica[LG_X + 1][LG_Y - 1]) << (tablica[LG_X + 1][LG_Y]) << (tablica[LG_X + 1][LG_Y + 1]) << "\n";
+                //cout  << (tablica[LG_X][LG_Y - 1]) << "V" << (tablica[LG_X][LG_Y + 1]) << "\n" << (tablica[LG_X + 1][LG_Y - 1]) << (tablica[LG_X + 1][LG_Y]) << (tablica[LG_X + 1][LG_Y + 1]) << "\n";
 
             if ((tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_") && (tablica[LG_X + 1][LG_Y + 1] == "#")) {
                 startLinia = 2;
@@ -191,68 +191,68 @@ public:
             }
         }
                 else if (odpowiedź == 'd') {
-                cout << (tablica[LG_X - 1][LG_Y]) <<  (tablica[LG_X - 1][LG_Y + 1]) << "\n" <<  ">" << (tablica[LG_X][LG_Y + 1]) << "\n" << (tablica[LG_X + 1][LG_Y]) << (tablica[LG_X + 1][LG_Y + 1]) << "\n";
+                //cout << (tablica[LG_X - 1][LG_Y]) <<  (tablica[LG_X - 1][LG_Y + 1]) << "\n" <<  ">" << (tablica[LG_X][LG_Y + 1]) << "\n" << (tablica[LG_X + 1][LG_Y]) << (tablica[LG_X + 1][LG_Y + 1]) << "\n";
             
-            if ((tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X + 1][LG_Y] != "#")  && (tablica[LG_X + 1][LG_Y + 1] != "#")) {
+            if ((tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y + 1] == "_") && (tablica[LG_X + 1][LG_Y] == "#")  && (tablica[LG_X + 1][LG_Y + 1] == "#")) {
                 startLinia = 2;
             }
-            else if ((tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "#") && (tablica[LG_X + 1][LG_Y] != "#")  && (tablica[LG_X + 1][LG_Y + 1] != "#")) {
-                startLinia = 27;
+            else if ((tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X + 1][LG_Y] == "#")  && (tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 28;
             }
-                      else if ((tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "#") && (tablica[LG_X + 1][LG_Y] != "_")  && (tablica[LG_X + 1][LG_Y + 1] != "#")) {
-                startLinia = 53;
+                      else if ((tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_")  && (tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 54;
             }
-                      else if ((tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X - 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X + 1][LG_Y] != "#")  && (tablica[LG_X + 1][LG_Y + 1] != "#")) {
+                      else if ((tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y + 1] == "_") && (tablica[LG_X + 1][LG_Y] == "#")  && (tablica[LG_X + 1][LG_Y + 1] == "#")) {
                 startLinia = 80;
             }
-                      else if ((tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X + 1][LG_Y] != "_")  && (tablica[LG_X + 1][LG_Y + 1] != "#")) {
+                      else if ((tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X + 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y + 1] == "_") && (tablica[LG_X + 1][LG_Y] == "_")  && (tablica[LG_X + 1][LG_Y + 1] == "#")) {
                 startLinia = 106;
             }
-                      else if ((tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "_") && (tablica[LG_X + 1][LG_Y] != "_")  && (tablica[LG_X + 1][LG_Y + 1] != "#")) {
+                      else if ((tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X + 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y + 1] == "_") && (tablica[LG_X + 1][LG_Y] == "_")  && (tablica[LG_X + 1][LG_Y + 1] == "#")) {
                 startLinia = 132;
             }
-                      else if ((tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "#") && (tablica[LG_X + 1][LG_Y] != "#")  && (tablica[LG_X + 1][LG_Y + 1] != "#")) {
+                      else if ((tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X + 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X + 1][LG_Y] == "#")  && (tablica[LG_X + 1][LG_Y + 1] == "#")) {
                 startLinia = 158;
             }
-                      else if ((tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X + 1][LG_Y + 1] != "#") && (tablica[LG_X][LG_Y + 1] != "#") && (tablica[LG_X + 1][LG_Y] != "_")  && (tablica[LG_X + 1][LG_Y + 1] != "#")) {
+                      else if ((tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X + 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_")  && (tablica[LG_X + 1][LG_Y + 1] == "#")) {
                 startLinia = 184;
             }
                       else {
-                cout << "NIE";
+                startLinia = 2;
             }
         }
         
                 else if (odpowiedź == 'a') {
-                cout << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << "\n" << (tablica[LG_X][LG_Y - 1]) << "<" << "\n" << (tablica[LG_X + 1][LG_Y - 1]) << (tablica[LG_X + 1][LG_Y]) << "\n";
+                //cout << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << "\n" << (tablica[LG_X][LG_Y - 1]) << "<" << "\n" << (tablica[LG_X + 1][LG_Y - 1]) << (tablica[LG_X + 1][LG_Y]) << "\n";
 
         
         
-            if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X][LG_Y - 1] != "_") && (tablica[LG_X + 1][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y] != "#")) {
+            if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#")  && (tablica[LG_X + 1][LG_Y] == "#")) {
                 startLinia = 2;
             }
-                    else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X][LG_Y - 1] != "#") && (tablica[LG_X + 1][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y] != "#")) {
-                startLinia = 27;
+                    else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#")  && (tablica[LG_X + 1][LG_Y] == "#")) {
+                startLinia = 28;
             }
-                                else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X][LG_Y - 1] != "#") && (tablica[LG_X + 1][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y] != "_")) {
-                startLinia = 53;
+                                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#")  && (tablica[LG_X + 1][LG_Y] == "_")) {
+                startLinia = 54;
             }
-                                else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X][LG_Y - 1] != "#") && (tablica[LG_X + 1][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y] != "#")) {
+                                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#")  && (tablica[LG_X + 1][LG_Y] == "#")) {
                 startLinia = 80;
             }
-                                else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X][LG_Y - 1] != "_") && (tablica[LG_X + 1][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y] != "_")) {
+                                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#")  && (tablica[LG_X + 1][LG_Y] == "_")) {
                 startLinia = 106;
             }
-                                else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X][LG_Y - 1] != "_") && (tablica[LG_X + 1][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y] != "_")) {
+                                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#")  && (tablica[LG_X + 1][LG_Y] == "_")) {
                 startLinia = 132;
             }
-                                else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X - 1][LG_Y] != "#") && (tablica[LG_X][LG_Y - 1] != "#") && (tablica[LG_X + 1][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y] != "#")) {
+                                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#")  && (tablica[LG_X + 1][LG_Y] == "#")) {
                 startLinia = 158;
             }
-                                else if ((tablica[LG_X - 1][LG_Y - 1] != "#") && (tablica[LG_X - 1][LG_Y] != "_") && (tablica[LG_X][LG_Y - 1] != "_") && (tablica[LG_X + 1][LG_Y - 1] != "#")  && (tablica[LG_X + 1][LG_Y] != "_")) {
+                                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#")  && (tablica[LG_X + 1][LG_Y] == "_")) {
                 startLinia =  184;
             }
                                 else {
-                cout << "NIE";
+                startLinia = 2;
             }
         }
         
@@ -286,6 +286,34 @@ public:
 
 int main()
 {
+
+    char strona_tytułowa = 'x';
+    ifstream plik("grafiki.txt");
+    string Okładka;
+    int numer = 5;
+
+
+    while (getline(plik, Okładka)) {
+        if ((numer > 242) && (numer < 316)) {
+            cout << Okładka  << "\n";
+
+            numer++;
+        }
+        numer++;
+
+    }
+
+    while ((strona_tytułowa != 'e')) {
+        cout << "Kliknij e aby zaczac \n ";
+        strona_tytułowa = _getch();
+    }
+    strona_tytułowa = 'x';
+    cout << "instrukcja";
+
+    while ((strona_tytułowa != 'e')) {
+        strona_tytułowa = _getch();
+    }
+
 
     // wartości
     string tablica[25][21];
