@@ -9,14 +9,13 @@ using namespace std;
 
 class KLASA_RENDEROWANIE_MAPY {
 public:
-    void MAPA_RENDER(string(&tablica)[25][21]) {
+    void MAPA_RENDER(string(&tablica)[25][21] ,int LP) {
 
         random_device rd;  // Pobiera losowe wartości od systemu
         mt19937 gen(rd()); // Generator liczb pseudolosowych
         uniform_int_distribution<int> dist(0, 99); // Zakres 1-100
 
         int losowa = dist(gen);
-        int wybor;
 
         for (int i = 0; i < 25; i++) {
             fill_n(tablica[i], 21, "_");
@@ -56,13 +55,14 @@ public:
 
 class PORUSZANIE_SIĘ {
 public:
-    void Ruch(string(&tablica)[25][21], int LG_X, int LG_Y) {
+    void Ruch(string(&tablica)[25][21], int LG_X, int LG_Y, int LP) {
 
 
         // PAMIĘTAJ DZBANIE ŻE JEST TO DO GÓRY NOGAMI !!!
 
         cout << "Lokalizacja X = " << LG_X << endl;
         cout << "Lokalizacja Y =" << LG_Y << endl;
+        cout << "Poziom = " << LP << endl;
 
         char odpowiedź = _getch();
         ifstream plik("grafiki.txt");
@@ -71,6 +71,8 @@ public:
         int startLinia = 5;
 
         system("cls");
+
+
 
         if (odpowiedź == 's') {
             if ((LG_X != 23) && (tablica[LG_X + 1][LG_Y] != "#")) {
@@ -88,10 +90,14 @@ public:
             }
         }
         else if (odpowiedź == 'a') {
-            if ((LG_Y != 1) && (tablica[LG_X][LG_Y - 1] != "#")) { 
+            if ((LG_Y != 1) && (tablica[LG_X][LG_Y - 1] != "#")) {
                 LG_Y--;
             }
         }
+        else if (odpowiedź == 'x') {
+
+        }
+
         //Wipisanie Wyniku
 
         for (int i = 0; i < 25; i++) {
@@ -127,12 +133,35 @@ public:
         }
         // system oceniania lokacji
         
+        /*
+        while  ((LG_X == 1) && (LG_Y == 1)) {
+            odpowiedź = 'X';
+
+            if (odpowiedź != 'e') {
+                system("cls");
+                startLinia = 307;
+                while (nr_linii < startLinia - 1 && getline(plik, linia)) {
+                    nr_linii++;
+                }
+                odpowiedź = _getch();
+            }
+            else {
+                LG_X = 23;
+                LG_Y = 11;
+                LP = LP - 1;
+
+
+            }
+
+        }
+        */
+
         if (odpowiedź == 'w') { 
             //cout << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << (tablica[LG_X - 1][LG_Y + 1]) << "\n" << (tablica[LG_X][LG_Y - 1]) << "A" << (tablica[LG_X][LG_Y + 1]);
 
             cout << "\n \n \n";
             if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#")) {
-                startLinia = 2;;
+                startLinia = 2;
             }
             else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X][LG_Y + 1] == "#")) {
                 startLinia = 28;
@@ -266,6 +295,7 @@ public:
         }
 
 
+
         for (int i = 0; i < 25; i++) {
             for (int j = 0; j < 21; j++) {
                 cout << tablica[i][j] << " ";
@@ -278,7 +308,7 @@ public:
             cout << endl;
         }
 
-        Ruch(tablica, LG_X, LG_Y);
+        Ruch(tablica, LG_X, LG_Y , LP);
 
 
     }
@@ -319,13 +349,14 @@ int main()
     string tablica[25][21];
     int lokalizacja_gracza_X = 23;
     int lokalizacja_gracza_Y = 11;
+    int Liczba_Poziomu = 30;
 
 
     KLASA_RENDEROWANIE_MAPY myObj;
-    myObj.MAPA_RENDER(tablica);
+    myObj.MAPA_RENDER(tablica , Liczba_Poziomu);
 
     PORUSZANIE_SIĘ ruchObj;
-    ruchObj.Ruch(tablica, lokalizacja_gracza_X, lokalizacja_gracza_Y);
+    ruchObj.Ruch(tablica, lokalizacja_gracza_X, lokalizacja_gracza_Y, Liczba_Poziomu);
 
 
     return 0;
