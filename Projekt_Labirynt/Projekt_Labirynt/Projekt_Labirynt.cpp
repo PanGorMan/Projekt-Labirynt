@@ -55,8 +55,14 @@ public:
 
 class PORUSZANIE_SIĘ {
 public:
+
     void Ruch(string(&tablica)[25][21], int LG_X, int LG_Y, int LP) {
 
+        random_device rd;  // Pobiera losowe wartości od systemu
+        mt19937 gen(rd()); // Generator liczb pseudolosowych
+        uniform_int_distribution<int> dist(0, 99); // Zakres 1-100
+
+        int losowa = dist(gen);
 
         // PAMIĘTAJ DZBANIE ŻE JEST TO DO GÓRY NOGAMI !!!
 
@@ -95,6 +101,57 @@ public:
             }
         }
         else if (odpowiedź == 'x') {
+
+            LG_X = 23;
+            LG_Y = 11;
+
+            for (int i = 0; i < 25; i++) {
+
+                for (int j = 0; j < 21; j++) {
+                    if (((i == 0) or (i == 24)) or ((j == 0) or (j == 20))) {
+                        tablica[i][j] = "#";
+                    }
+                    else if ((i % 2 != 0) or (j % 2 != 0)) {
+                        tablica[i][j] = "_";
+                    }
+
+                }
+                cout << endl;
+            }
+
+
+     
+            for (int i = 0; i < 25; i++) {
+                for (int j = 0; j < 21; j++) {
+
+                    if (((i == 24) or (j == 20)) or ((i == 0) or (j == 0))) {
+                        tablica[i][j] = "#";
+                    }
+                    if (((i % 2 == 0) && (j % 2 == 0)) or ((i % 2 == 0) && (j % 2 == 0))) {
+                        tablica[i][j] = "#";
+                    }
+                    if (((i % 2 != 0) && (j % 2 == 0)) or ((i % 2 == 0) && (j % 2 != 0))) {
+                        losowa = dist(gen);
+                        if (losowa < 43) {
+                            tablica[i][j] = "#";
+                        }
+                    }
+                    if (((i == 2) or (i == 22)) && ((j < 19) && (j > 1))) {
+                        tablica[i][j] = "#";
+                    }
+                    if (((i == 1) or (i == 23)) && ((j < 20) && (j > 0))) {
+                        tablica[i][j] = "_";
+                    }
+                    else if (((i == 2) or (i == 22)) && ((j == 1) or (j == 9) or (j == 19))) {
+                        tablica[i][j] = "_";
+                    }
+                    cout << tablica[i][j] << " ";
+
+
+                }
+                cout << endl;
+            }
+            Ruch(tablica, LG_X, LG_Y, LP);
 
         }
 
