@@ -78,8 +78,6 @@ public:
 
         system("cls");
 
-
-
         if (odpowiedź == 's') {
             if ((LG_X != 23) && (tablica[LG_X + 1][LG_Y] != "#")) {
                 LG_X++;
@@ -153,6 +151,11 @@ public:
             }
             Ruch(tablica, LG_X, LG_Y, LP);
 
+        }
+        else {
+
+
+            Ruch(tablica, LG_X, LG_Y, LP);
         }
 
         //Wipisanie Wyniku
@@ -309,9 +312,6 @@ public:
         }
         
                 else if (odpowiedź == 'a') {
-                //cout << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << "\n" << (tablica[LG_X][LG_Y - 1]) << "<" << "\n" << (tablica[LG_X + 1][LG_Y - 1]) << (tablica[LG_X + 1][LG_Y]) << "\n";
-
-        
         
             if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#")  && (tablica[LG_X + 1][LG_Y] == "#")) {
                 startLinia = 2;
@@ -381,7 +381,7 @@ int main()
 
 
     while (getline(plik, Okładka)) {
-        if ((numer > 242) && (numer < 316)) {
+        if ((numer > 245) && (numer < 304)) {
             cout << Okładka  << "\n";
 
             numer++;
@@ -391,16 +391,18 @@ int main()
     }
 
     while ((strona_tytułowa != 'e')) {
-        cout << "Kliknij e aby zaczac \n ";
+        cout << "                                  ----------> Press e to start <----------";
         strona_tytułowa = _getch();
     }
     strona_tytułowa = 'x';
-    cout << "instrukcja";
+    system("cls");
+    cout << "instrukcja:\n Sterwoanie - w , s , a , d \n restart mapy - x\n cle gry : dostan sie na parter \n Fabula : \n Jako tani pracownik , nadzorujesz stacje 53 .\n Z powodu braku zasilania musisz zrestartowac generatoey ale winda nie dizala. \n Musisz jisc drabinami na samo dno i zrestartowac generatory.\n powodzenia ; ) ";
 
     while ((strona_tytułowa != 'e')) {
         strona_tytułowa = _getch();
     }
 
+    system("cls");
 
     // wartości
     string tablica[25][21];
