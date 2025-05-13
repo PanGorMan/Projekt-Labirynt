@@ -192,29 +192,35 @@ public:
 
         }
         // system oceniania lokacji
-        
-        /*
-        while  ((LG_X == 1) && (LG_Y == 1)) {
-            odpowiedź = 'X';
+        if ((LG_X == 1) && (LG_Y == 1)) {
 
-            if (odpowiedź != 'e') {
-                system("cls");
-                startLinia = 307;
-                while (nr_linii < startLinia - 1 && getline(plik, linia)) {
-                    nr_linii++;
+            system("cls");
+
+            cout << "QWEQWEQWEQWEQWEQWEQWE";
+
+
+
+            while (nr_linii < startLinia - 1 && getline(plik, linia)) {
+                nr_linii++;
+            }
+
+
+
+            for (int i = 0; i < 25; i++) {
+                for (int j = 0; j < 21; j++) {
+                    cout << tablica[i][j] << " ";
+                    if (j == 20) {
+                        if (getline(plik, linia)) {
+                            cout << linia;
+                        }
+                    }
                 }
-                odpowiedź = _getch();
-            }
-            else {
-                LG_X = 23;
-                LG_Y = 11;
-                LP = LP - 1;
-
-
+                cout << endl;
             }
 
+            Ruch(tablica, LG_X, LG_Y, LP);
+            
         }
-        */
 
         if (odpowiedź == 'w') { 
             //cout << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << (tablica[LG_X - 1][LG_Y + 1]) << "\n" << (tablica[LG_X][LG_Y - 1]) << "A" << (tablica[LG_X][LG_Y + 1]);
