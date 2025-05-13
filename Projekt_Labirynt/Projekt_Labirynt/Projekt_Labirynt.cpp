@@ -5,6 +5,7 @@
 #include <cstdlib>  //do kasowania konsoli
 #include <conio.h> //do natychmiastowego cin
 
+
 using namespace std;
 
 class KLASA_RENDEROWANIE_MAPY {
@@ -78,6 +79,14 @@ public:
 
         system("cls");
 
+        if (LP == 0) {
+            cout << "KONIEC !!! \n klkiknij e by wyjsc";
+            while (odpowiedź != 'e') {
+                odpowiedź = _getch();
+            }
+            exit(0);
+        }
+
         if (odpowiedź == 's') {
             if ((LG_X != 23) && (tablica[LG_X + 1][LG_Y] != "#")) {
                 LG_X++;
@@ -116,9 +125,6 @@ public:
                 }
                 cout << endl;
             }
-
-
-     
             for (int i = 0; i < 25; i++) {
                 for (int j = 0; j < 21; j++) {
 
@@ -196,19 +202,14 @@ public:
 
             system("cls");
 
-            cout << "QWEQWEQWEQWEQWEQWEQWE";
-
-
+            startLinia = 211;
 
             while (nr_linii < startLinia - 1 && getline(plik, linia)) {
                 nr_linii++;
             }
 
-
-
             for (int i = 0; i < 25; i++) {
                 for (int j = 0; j < 21; j++) {
-                    cout << tablica[i][j] << " ";
                     if (j == 20) {
                         if (getline(plik, linia)) {
                             cout << linia;
@@ -218,12 +219,63 @@ public:
                 cout << endl;
             }
 
+            while (odpowiedź != 'e') {
+                odpowiedź = _getch();
+
+            }
+
+            LP = LP - 1;
+            LG_X = 23;
+            LG_Y = 11;
+
+            for (int i = 0; i < 25; i++) {
+
+                for (int j = 0; j < 21; j++) {
+                    if (((i == 0) or (i == 24)) or ((j == 0) or (j == 20))) {
+                        tablica[i][j] = "#";
+                    }
+                    else if ((i % 2 != 0) or (j % 2 != 0)) {
+                        tablica[i][j] = "_";
+                    }
+
+                }
+                cout << endl;
+            }
+            for (int i = 0; i < 25; i++) {
+                for (int j = 0; j < 21; j++) {
+
+                    if (((i == 24) or (j == 20)) or ((i == 0) or (j == 0))) {
+                        tablica[i][j] = "#";
+                    }
+                    if (((i % 2 == 0) && (j % 2 == 0)) or ((i % 2 == 0) && (j % 2 == 0))) {
+                        tablica[i][j] = "#";
+                    }
+                    if (((i % 2 != 0) && (j % 2 == 0)) or ((i % 2 == 0) && (j % 2 != 0))) {
+                        losowa = dist(gen);
+                        if (losowa < 43) {
+                            tablica[i][j] = "#";
+                        }
+                    }
+                    if (((i == 2) or (i == 22)) && ((j < 19) && (j > 1))) {
+                        tablica[i][j] = "#";
+                    }
+                    if (((i == 1) or (i == 23)) && ((j < 20) && (j > 0))) {
+                        tablica[i][j] = "_";
+                    }
+                    else if (((i == 2) or (i == 22)) && ((j == 1) or (j == 9) or (j == 19))) {
+                        tablica[i][j] = "_";
+                    }
+                    cout << tablica[i][j] << " ";
+
+
+                }
+                cout << endl;
+            }
             Ruch(tablica, LG_X, LG_Y, LP);
             
         }
 
         if (odpowiedź == 'w') { 
-            //cout << (tablica[LG_X - 1][LG_Y - 1]) << (tablica[LG_X - 1][LG_Y]) << (tablica[LG_X - 1][LG_Y + 1]) << "\n" << (tablica[LG_X][LG_Y - 1]) << "A" << (tablica[LG_X][LG_Y + 1]);
 
             cout << "\n \n \n";
             if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X - 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#")) {
@@ -414,7 +466,7 @@ int main()
     string tablica[25][21];
     int lokalizacja_gracza_X = 23;
     int lokalizacja_gracza_Y = 11;
-    int Liczba_Poziomu = 30;
+    int Liczba_Poziomu = 1;
 
 
     KLASA_RENDEROWANIE_MAPY myObj;
