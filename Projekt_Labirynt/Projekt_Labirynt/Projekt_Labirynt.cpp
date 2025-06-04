@@ -80,6 +80,8 @@ public:
 
         while (czy_gra == 1) {
 
+            czy_gra == 1;
+
             if ((LG_X == 1) && (LG_Y == 1)) {
                 czy_gra = 0;
                 break;
@@ -163,14 +165,11 @@ public:
                 }
                 cout << endl;
             }
-            Ruch(tablica, LG_X, LG_Y, LP);
+            LG_X = 23;
+            LG_Y = 11;
 
         }
-        else {
 
-
-            Ruch(tablica, LG_X, LG_Y, LP);
-        }
 
         //Wipisanie Wyniku
 
@@ -354,6 +353,7 @@ public:
             }
             cout << endl;
         }
+
 
         Ruch(tablica, LG_X, LG_Y, LP);
 
