@@ -33,6 +33,9 @@ public:
         this->LG_Y = LG_Y;
         this->LP = LP;
         losowa = dist(gen);
+
+        Generowanie_terenu();
+
     }
 
     void Generowanie_terenu() {
@@ -80,7 +83,258 @@ public:
         losowa = dist(gen);
 
 
-    }
+        cout << "Lokalizacja X = " << LG_X << endl;
+        cout << "Lokalizacja Y =" << LG_Y << endl;
+        cout << "Poziom = " << LP << endl;
+
+
+
+        cout << losowa << endl;
+
+
+        char odpowiedź = _getch();
+        ifstream plik("grafiki.txt");
+        string linia;
+        int nr_linii = 0;
+        int startLinia = 5;
+        int czy_gra = 1;
+
+        if (LP == 0) {
+            cout << "KONIEC !!! \n klkiknij e by wyjsc";
+            while (odpowiedź != 'e') {
+                odpowiedź = _getch();
+            }
+            exit(0);
+        }
+
+        if (odpowiedź == 's') {
+            if ((LG_X != 23) && (*tablica[LG_X + 1][LG_Y] != "#")) {
+                LG_X++;
+            }
+        }
+        else if (odpowiedź == 'w') {
+            if ((LG_X != 1) && (*tablica[LG_X - 1][LG_Y] != "#")) {
+                LG_X--;
+            }
+        }
+        else if (odpowiedź == 'd') {
+            if ((LG_Y != 19) && (*tablica[LG_X][LG_Y + 1] != "#")) {
+                LG_Y++;
+            }
+        }
+        else if (odpowiedź == 'a') {
+            if ((LG_Y != 1) && (*tablica[LG_X][LG_Y - 1] != "#")) {
+                LG_Y--;
+            }
+        }
+
+        else if (odpowiedź == 'x') {
+            Seter(*tablica, 23, 11, LP);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        for (int i = 0; i < 25; i++) {
+            for (int j = 0; j < 21; j++) {
+                if ((*tablica[i][j] == "A") or (*tablica[i][j] == "V") or (*tablica[i][j] == "<") or (*tablica[i][j] == ">"))
+                    *tablica[i][j] = "_";
+            }
+        }
+
+        for (int i = 0; i < 25; i++) {
+            for (int j = 0; j < 21; j++) {
+                if ((i == LG_X) && (j == LG_Y)) {
+
+                    if (odpowiedź == 's') {
+                        *tablica[i][j] = "V";
+
+                    }
+                    else if (odpowiedź == 'w') {
+                        *tablica[i][j] = "A";
+
+                    }
+                    else if (odpowiedź == 'd') {
+                        *tablica[i][j] = ">";
+
+                    }
+                    else if (odpowiedź == 'a') {
+                        *tablica[i][j] = "<";
+
+                    }
+                }
+            }
+
+        }
+        // system oceniania lokacji
+
+
+        if (odpowiedź == 'w') {
+
+            cout << "\n \n \n";
+            if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "#")) {
+                startLinia = 2;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X][LG_Y + 1] == "#")) {
+                startLinia = 28;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "_")) {
+                startLinia = 54;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X][LG_Y + 1] == "#")) {
+                startLinia = 80;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "_")) {
+                startLinia = 106;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X][LG_Y + 1] == "_")) {
+                startLinia = 132;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "#")) {
+                startLinia = 158;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X][LG_Y + 1] == "_")) {
+                startLinia = 184;
+            }
+            else {
+                startLinia = 2;;
+            }
+        }
+        else if (odpowiedź == 's') {
+            //cout  << (tablica[LG_X][LG_Y - 1]) << "V" << (tablica[LG_X][LG_Y + 1]) << "\n" << (tablica[LG_X + 1][LG_Y - 1]) << (tablica[LG_X + 1][LG_Y]) << (tablica[LG_X + 1][LG_Y + 1]) << "\n";
+
+            if ((*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "#") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "_") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 2;
+            }
+            else if ((*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X][LG_Y + 1] == "#") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "#") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 28;
+            }
+            else if ((*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "_") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "#") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 54;
+            }
+            else if ((*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X][LG_Y + 1] == "#") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "_") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 80;
+            }
+            else if ((*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "_") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "_") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 106;
+            }
+            else if ((*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X][LG_Y + 1] == "_") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "_") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 132;
+            }
+            else if ((*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "#") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "#") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 158;
+            }
+            else if ((*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X][LG_Y + 1] == "_") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "#") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 184;
+            }
+            else {
+                startLinia = 2;;
+            }
+        }
+        else if (odpowiedź == 'd') {
+            //cout << (tablica[LG_X - 1][LG_Y]) <<  (tablica[LG_X - 1][LG_Y + 1]) << "\n" <<  ">" << (tablica[LG_X][LG_Y + 1]) << "\n" << (tablica[LG_X + 1][LG_Y]) << (tablica[LG_X + 1][LG_Y + 1]) << "\n";
+
+            if ((*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "_") && (*tablica[LG_X + 1][LG_Y] == "#") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 2;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "#") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 28;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "_") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 54;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X - 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "_") && (*tablica[LG_X + 1][LG_Y] == "#") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 80;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X + 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "_") && (*tablica[LG_X + 1][LG_Y] == "_") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 106;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X + 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "_") && (*tablica[LG_X + 1][LG_Y] == "_") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 132;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X + 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "#") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 158;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X + 1][LG_Y + 1] == "#") && (*tablica[LG_X][LG_Y + 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "_") && (*tablica[LG_X + 1][LG_Y + 1] == "#")) {
+                startLinia = 184;
+            }
+            else {
+                startLinia = 2;
+            }
+        }
+        else if (odpowiedź == 'a') {
+
+            if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "#")) {
+                startLinia = 2;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "#")) {
+                startLinia = 28;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "_")) {
+                startLinia = 54;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "#")) {
+                startLinia = 80;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "_")) {
+                startLinia = 106;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "_")) {
+                startLinia = 132;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "#") && (*tablica[LG_X][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "#")) {
+                startLinia = 158;
+            }
+            else if ((*tablica[LG_X - 1][LG_Y - 1] == "#") && (*tablica[LG_X - 1][LG_Y] == "_") && (*tablica[LG_X][LG_Y - 1] == "_") && (*tablica[LG_X + 1][LG_Y - 1] == "#") && (*tablica[LG_X + 1][LG_Y] == "_")) {
+                startLinia = 184;
+            }
+            else {
+                startLinia = 2;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    } // tego kurna nie dodykać !!!!
 };
 
 
@@ -132,6 +386,7 @@ int  main()
 
     Gra_1* gierka1 = new Gra_1();
     gierka1-> Seter(tablica, lokalizacja_gracza_X, lokalizacja_gracza_Y, Liczba_Poziomu);
-    gierka1->Generowanie_terenu();
-    gierka1 -> Ruch() ;
+    //gierka1->Generowanie_terenu();
+    gierka1 -> Ruch();
+
 }
