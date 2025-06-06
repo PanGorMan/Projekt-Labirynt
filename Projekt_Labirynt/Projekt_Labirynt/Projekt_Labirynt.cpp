@@ -97,6 +97,88 @@ public:
 
         system("cls");
 
+        if (LP == 0) {
+            cout << "KONIEC !!! \n klkiknij e by wyjsc";
+            while (odpowiedź != 'e') {
+                odpowiedź = _getch();
+            }
+            exit(0);
+        }
+
+        if ((LG_X == 23) && (LG_Y == 1)){
+            startLinia = 211;
+
+            while (nr_linii < startLinia - 1 && getline(plik, linia)) {
+                nr_linii++;
+            }
+
+            for (int i = 0; i < 25; i++) {
+                for (int j = 0; j < 21; j++) {
+                    if (j == 20) {
+                        if (getline(plik, linia)) {
+                            cout << linia;
+                        }
+                    }
+                }
+                cout << endl;
+            }
+
+            while (odpowiedź != 'e') {
+                odpowiedź = _getch();
+
+            }
+            LP = LP - 1;
+
+            losowa = dist(gen);
+            for (int i = 0; i < 25; i++) {
+                for (int j = 0; j < 21; j++) {
+                    (tablica)[i][j] = "_";
+                }
+            }
+            for (int i = 0; i < 25; i++) {
+                for (int j = 0; j < 21; j++) {
+
+                    if (((i == 24) or (j == 20)) or ((i == 0) or (j == 0))) {
+                        (tablica)[i][j] = "#";
+                    }
+                    if (((i % 2 == 0) && (j % 2 == 0)) or ((i % 2 == 0) && (j % 2 == 0))) {
+                        (tablica)[i][j] = "#";
+                    }
+                    if (((i % 2 != 0) && (j % 2 == 0)) or ((i % 2 == 0) && (j % 2 != 0))) {
+                        losowa = dist(gen);
+                        if (losowa < 43) {
+                            (tablica)[i][j] = "#";
+                        }
+                    }
+                    if (((i == 2) or (i == 22)) && ((j < 19) && (j > 1))) {
+                        (tablica)[i][j] = "#";
+                    }
+                    if (((i == 1) or (i == 23)) && ((j < 20) && (j > 0))) {
+                        (tablica)[i][j] = "_";
+                    }
+                    else if (((i == 2) or (i == 22)) && ((j == 1) or (j == 9) or (j == 19))) {
+                        (tablica)[i][j] = "_";
+                    }
+                    cout << (tablica)[i][j] << " ";
+
+                }
+                cout << endl;
+            }
+
+            system("cls");
+
+
+            for (int i = 0; i < 25; i++) {
+                for (int j = 0; j < 21; j++) {
+                    cout << (tablica)[i][j] << " ";
+                }
+                cout << endl;
+            }
+
+            Ruch(tablica, 23, 11, LP);
+
+        }
+
         if (odpowiedź == 's') {
             if ((LG_X != 23) && (tablica[LG_X + 1][LG_Y] != "#")) {
                 LG_X++;
@@ -284,37 +366,36 @@ public:
             else if ((tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X + 1][LG_Y + 1] == "#") && (tablica[LG_X][LG_Y + 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_") && (tablica[LG_X + 1][LG_Y + 1] == "#")) {
                 startLinia = 184;
             }
+        }
         else if (odpowiedź == 'a') {
 
-                if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "#")) {
-                    startLinia = 2;
-                }
-                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "#")) {
-                    startLinia = 28;
-                }
-                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_")) {
-                    startLinia = 54;
-                }
-                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "#")) {
-                    startLinia = 80;
-                }
-                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_")) {
-                    startLinia = 106;
-                }
-                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_")) {
-                    startLinia = 132;
-                }
-                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "#")) {
-                    startLinia = 158;
-                }
-                else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_")) {
-                    startLinia = 184;
-                }
-                else {
-                    startLinia = 2;
-                }
+            if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "#")) {
+                startLinia = 2;
             }
-
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "#")) {
+                startLinia = 28;
+            }
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_")) {
+                startLinia = 54;
+            }
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "#")) {
+                startLinia = 80;
+            }
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_")) {
+                startLinia = 106;
+            }
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_")) {
+                startLinia = 132;
+            }
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "#") && (tablica[LG_X][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "#")) {
+                startLinia = 158;
+            }
+            else if ((tablica[LG_X - 1][LG_Y - 1] == "#") && (tablica[LG_X - 1][LG_Y] == "_") && (tablica[LG_X][LG_Y - 1] == "_") && (tablica[LG_X + 1][LG_Y - 1] == "#") && (tablica[LG_X + 1][LG_Y] == "_")) {
+                startLinia = 184;
+            }
+            else {
+                startLinia = 2;
+            }
         }
 
         while (nr_linii < startLinia - 1 && getline(plik, linia)) {
